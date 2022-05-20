@@ -21,7 +21,11 @@ public class WeatherForecastController : ControllerBase
     [HttpPost(Name = "GetWeatherForecast")]
     public IEnumerable<WeatherForecast> Get([FromBody] ForecastRequest request)
     {
-        _logger.LogInformation("{UserId} requests weather forecast", request.UserId);
+        _logger.LogInformation("weather forecast requested");
+        if (request.ThrowExceptions)
+        {
+            throw new ApplicationException("requested exception");
+        }
         return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateTime.Now.AddDays(index),
@@ -30,9 +34,4 @@ public class WeatherForecastController : ControllerBase
             })
             .ToArray();
     }
-}
-
-public class ForecastRequest
-{
-    public Guid UserId { get; init; } 
 }
