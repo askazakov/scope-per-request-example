@@ -10,6 +10,13 @@ public interface IWithUserId
 
 public class EnrichActivityActionFilter : IActionFilter
 {
+    private readonly ILogger<EnrichActivityActionFilter> _logger;
+
+    public EnrichActivityActionFilter(ILogger<EnrichActivityActionFilter> logger)
+    {
+        _logger = logger;
+    }
+
     public void OnActionExecuting(ActionExecutingContext context)
     {
         foreach (var actionArgument in context.ActionArguments)
@@ -17,6 +24,10 @@ public class EnrichActivityActionFilter : IActionFilter
             if (actionArgument.Value is IWithUserId withUserId)
             {
                 Activity.Current?.AddTag(nameof(IWithUserId.UserId), withUserId.UserId.ToString());
+                _logger.BeginScope(new Dictionary<string, string>
+                {
+                    ["UserId1"] = withUserId.UserId.ToString()
+                });
             }
         }
     }
