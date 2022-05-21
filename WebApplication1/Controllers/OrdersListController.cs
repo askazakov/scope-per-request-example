@@ -20,6 +20,10 @@ public class OrdersListController : ControllerBase
     [HttpPost(Name = "GetOrdersList")]
     public IEnumerable<OrderResponse> Get([FromBody] OrdersListRequest request)
     {
+        _logger.BeginScope(new Dictionary<string, string>
+        {
+            ["UserId_scope"] = request.UserId.ToString()
+        });
         _logger.LogInformation("orders list requested");
         if (request.ThrowExceptions)
         {

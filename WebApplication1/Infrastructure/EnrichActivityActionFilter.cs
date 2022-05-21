@@ -26,7 +26,7 @@ public class EnrichActivityActionFilter : IActionFilter
                 Activity.Current?.AddTag(nameof(IWithUserId.UserId), withUserId.UserId.ToString());
                 _logger.BeginScope(new Dictionary<string, string>
                 {
-                    ["UserId1"] = withUserId.UserId.ToString()
+                    ["UserId_filter"] = withUserId.UserId.ToString()
                 });
             }
         }
