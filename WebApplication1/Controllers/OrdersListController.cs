@@ -4,32 +4,31 @@ namespace WebApplication1.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class WeatherForecastController : ControllerBase
+public class OrdersListController : ControllerBase
 {
     private static readonly string[] Summaries =
     {
         "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
     };
 
-    private readonly ILogger<WeatherForecastController> _logger;
+    private readonly ILogger<OrdersListController> _logger;
 
-    public WeatherForecastController(ILogger<WeatherForecastController> logger)
+    public OrdersListController(ILogger<OrdersListController> logger)
     {
         _logger = logger;
     }
 
-    [HttpPost(Name = "GetWeatherForecast")]
-    public IEnumerable<WeatherForecast> Get([FromBody] ForecastRequest request)
+    [HttpPost(Name = "GetOrdersList")]
+    public IEnumerable<OrderResponse> Get([FromBody] OrdersListRequest request)
     {
-        _logger.LogInformation("weather forecast requested");
+        _logger.LogInformation("orders list requested");
         if (request.ThrowExceptions)
         {
             throw new ApplicationException("requested exception");
         }
-        return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+        return Enumerable.Range(1, 5).Select(_ => new OrderResponse
             {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = Random.Shared.Next(-20, 55),
+                OrderId = Guid.NewGuid(),
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)]
             })
             .ToArray();
