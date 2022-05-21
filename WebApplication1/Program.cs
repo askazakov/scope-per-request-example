@@ -3,6 +3,7 @@ using Serilog.Enrichers.ActivityTags;
 using Serilog.Events;
 using Serilog.Exceptions;
 using Serilog.Formatting.Compact;
+using WebApplication1.Controllers;
 using WebApplication1.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -31,6 +32,7 @@ builder.Services.AddControllers(options =>
 {
     options.Filters.Add<EnrichActivityActionFilter>();
 });
+builder.Services.AddScoped<OrderRepository>();
 
 var app = builder.Build();
 

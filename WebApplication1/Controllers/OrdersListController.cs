@@ -6,15 +6,14 @@ namespace WebApplication1.Controllers;
 [Route("[controller]")]
 public class OrdersListController : ControllerBase
 {
-    private static readonly string[] Summaries =
-    {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
-
+    private readonly OrderRepository _orderRepository;
     private readonly ILogger<OrdersListController> _logger;
 
-    public OrdersListController(ILogger<OrdersListController> logger)
+    public OrdersListController(
+        OrderRepository orderRepository,
+        ILogger<OrdersListController> logger)
     {
+        _orderRepository = orderRepository;
         _logger = logger;
     }
 
@@ -26,11 +25,8 @@ public class OrdersListController : ControllerBase
         {
             throw new ApplicationException("requested exception");
         }
-        return Enumerable.Range(1, 5).Select(_ => new OrderResponse
-            {
-                OrderId = Guid.NewGuid(),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
+
+        var orderResponses = _orderRepository.GetOrders();
+        return orderResponses.ToArray();
     }
 }
