@@ -1,0 +1,1 @@
+It's just repository for https://github.com/askazakov/notes/blob/main/0012.request-scope.md
