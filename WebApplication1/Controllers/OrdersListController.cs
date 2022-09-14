@@ -20,17 +20,21 @@ public class OrdersListController : ControllerBase
     [HttpPost(Name = "GetOrdersList")]
     public IEnumerable<OrderResponse> Get([FromBody] OrdersListRequest request)
     {
-        _logger.BeginScope(new Dictionary<string, string>
+        try
         {
-            ["UserId_scope"] = request.UserId.ToString()
-        });
-        _logger.LogInformation("orders list requested");
-        if (request.ThrowExceptions)
-        {
-            throw new ApplicationException("requested exception");
-        }
+            _logger.BeginScope(new Dictionary<string, string>
+            {
+                ["UserId_scope"] = request.UserId.ToString()
+            });
+            _logger.LogInformation("orders list requested");
 
-        var orderResponses = _orderRepository.GetOrders();
-        return orderResponses.ToArray();
+            var orderResponses = _orderRepository.GetOrders(request.ThrowExceptions);
+            return orderResponses.ToArray();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error occured");
+            throw;
+        }
     }
 }
