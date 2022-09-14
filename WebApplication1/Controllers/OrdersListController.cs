@@ -22,7 +22,7 @@ public class OrdersListController : ControllerBase
     {
         try
         {
-            _logger.BeginScope(new Dictionary<string, string>
+            using var scope = _logger.BeginScope(new Dictionary<string, string>
             {
                 ["UserId_scope"] = request.UserId.ToString()
             });

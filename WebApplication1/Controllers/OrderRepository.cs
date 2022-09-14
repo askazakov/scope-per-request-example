@@ -18,7 +18,7 @@ public class OrderRepository
     {
         try
         {
-            _logger.BeginScope(new Dictionary<string, string>
+            using var scope = _logger.BeginScope(new Dictionary<string, string>
             {
                 ["inner_scope_id"] = Guid.NewGuid().ToString()
             });

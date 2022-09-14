@@ -1,0 +1,75 @@
+{
+    "@t": "2022-09-14T08:53:15.1720180Z",
+    "@mt": "GetOrders invoked",
+    "SourceContext": "WebApplication1.Controllers.OrderRepository",
+    "ActionId": "511aae2e-65d4-4dd8-b689-c6e7b6744394",
+    "ActionName": "WebApplication1.Controllers.OrdersListController.Get (WebApplication1)",
+    "RequestId": "0HMKM5PLMP9D1:00000002",
+    "RequestPath": "/OrdersList",
+    "ConnectionId": "0HMKM5PLMP9D1",
+    "Scope": [
+        {
+            "UserId_filter": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+        },
+        {
+            "UserId_scope": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+        },
+        {
+            "inner_scope_id": "bdbf666a-8dfe-4ee0-b519-7f93f6cda710"
+        }
+    ],
+    "UserId": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+}
+{
+    "@t": "2022-09-14T08:53:15.2950490Z",
+    "@mt": "inner log entry for exception",
+    "@l": "Error",
+    "@x": "System.ApplicationException: requested exception\n   at WebApplication1.Controllers.OrderRepository.GetOrders(Boolean throwException) in /Users/askazakov/projects/dotnet/askazakov/scope-per-request-example/WebApplication1/Controllers/OrderRepository.cs:line 29\n   at WebApplication1.Controllers.OrdersListController.Get(OrdersListRequest request) in /Users/askazakov/projects/dotnet/askazakov/scope-per-request-example/WebApplication1/Controllers/OrdersListController.cs:line 31",
+    "SourceContext": "WebApplication1.Controllers.OrderRepository",
+    "ActionId": "511aae2e-65d4-4dd8-b689-c6e7b6744394",
+    "ActionName": "WebApplication1.Controllers.OrdersListController.Get (WebApplication1)",
+    "RequestId": "0HMKM5PLMP9D1:00000002",
+    "RequestPath": "/OrdersList",
+    "ConnectionId": "0HMKM5PLMP9D1",
+    "Scope": [
+        {
+            "UserId_filter": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+        },
+        {
+            "UserId_scope": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+        }
+    ],
+    "UserId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "ExceptionDetail": {
+        "Type": "System.ApplicationException",
+        "HResult": -2146232832,
+        "Message": "requested exception",
+        "Source": "WebApplication1",
+        "TargetSite": "System.Collections.Generic.IEnumerable`1[WebApplication1.OrderResponse] GetOrders(Boolean)"
+    }
+}
+{
+    "@t": "2022-09-14T08:53:15.3912900Z",
+    "@mt": "Error occured",
+    "@l": "Error",
+    "@x": "System.ApplicationException: requested exception\n   at WebApplication1.Controllers.OrderRepository.GetOrders(Boolean throwException) in /Users/askazakov/projects/dotnet/askazakov/scope-per-request-example/WebApplication1/Controllers/OrderRepository.cs:line 29\n   at WebApplication1.Controllers.OrdersListController.Get(OrdersListRequest request) in /Users/askazakov/projects/dotnet/askazakov/scope-per-request-example/WebApplication1/Controllers/OrdersListController.cs:line 31\n   at lambda_method3(Closure , Object , Object[] )\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()",
+    "SourceContext": "WebApplication1.Controllers.OrdersListController",
+    "ActionId": "511aae2e-65d4-4dd8-b689-c6e7b6744394",
+    "ActionName": "WebApplication1.Controllers.OrdersListController.Get (WebApplication1)",
+    "RequestId": "0HMKM5PLMP9D1:00000002",
+    "RequestPath": "/OrdersList",
+    "ConnectionId": "0HMKM5PLMP9D1",
+    "Scope": [
+        {
+            "UserId_filter": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+        }
+    ],
+    "UserId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "ExceptionDetail": {
+        "Type": "System.ApplicationException",
+        "HResult": -2146232832,
+        "Message": "requested exception",
+        "Source": "WebApplication1",
+        "TargetSite": "System.Collections.Generic.IEnumerable`1[WebApplication1.OrderResponse] GetOrders(Boolean)"
+    }
+}
