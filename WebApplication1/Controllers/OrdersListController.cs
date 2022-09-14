@@ -31,10 +31,15 @@ public class OrdersListController : ControllerBase
             var orderResponses = _orderRepository.GetOrders(request.ThrowExceptions);
             return orderResponses.ToArray();
         }
-        catch (Exception ex)
+        catch (Exception ex) when (LogException(ex))
         {
-            _logger.LogError(ex, "Error occured");
             throw;
         }
+    }
+
+    private bool LogException(Exception ex)
+    {
+        _logger.LogError(ex, "Error occured");
+        return true;
     }
 }
